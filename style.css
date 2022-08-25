@@ -1,0 +1,273 @@
+:root {
+    --width_base-modal: 940px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color: #333;
+    font-size: 62.5%;
+    font-family: "Open Sans", sans-serif;
+}
+
+.main {
+    background: linear-gradient(135deg, #c7a6da, #ffa3c5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.base-modal {
+    display: flex;
+    position: relative;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    width: var(--width_base-modal);
+    height: 440px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgb(255, 255, 255);
+}
+
+.sign-up,
+.login {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+}
+
+.sign-up .sign-up__title,
+.login .login__title {
+    font-size: 3.7rem;
+    font-weight: 100;
+    line-height: 3.8rem;
+    margin-bottom: 24px;
+}
+
+.btn {
+    width: 180px;
+    height: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255);
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: ease 0.1s;
+}
+
+.btn:hover {
+    opacity: 0.6;
+}
+
+.sign-up .sign-up__message,
+.login .login__message {
+    font-size: 1.4rem;
+    font-weight: 100;
+    margin-bottom: 28px;
+}
+
+.form {
+    position: absolute;
+    width: 460px;
+    height: 520px;
+    padding: 32px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 3px;
+    padding: 40px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+
+#form-sign-up {
+    left: calc((100vw)/2 - 420px);
+    transition: 1.2s;
+    animation: slideSignUp ease 1.2s;
+    display: none;
+}
+
+#form-login {
+    right: calc((100vw)/2 - 420px)
+    /* display: none; */
+}
+
+.form .heading {
+    display: flex;
+    justify-content: left;
+    font-size: 2.4rem;
+    font-weight: 100;
+    padding: 16px 10px;
+    color: rgb(164 122 198);
+}
+
+#form-login .heading {
+    padding: 40px 10px;
+}
+
+.form .desc {
+    text-align: center;
+    color: #636d77;
+    font-size: 1.6rem;
+    font-weight: lighter;
+    line-height: 2.4rem;
+    margin-top: 16px;
+    font-weight: 300;
+}
+
+.form-group {
+    display: flex;
+    position: relative;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form-label,
+.form-message {
+    text-align: left;
+}
+
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border-color: transparent;
+    border-bottom: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+.form-icon {
+    position: absolute;
+    color: #b3b3b3;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+}
+
+.form-control:focus~.form-line-focus {
+    width: 100%;
+}
+
+.form-line-focus {
+    position: absolute;
+    bottom: 4px;
+    width: 0%;
+    border-bottom: 2px solid rgb(164 122 198);
+    transition: 0.4s;
+}
+
+.form-group.invalid .form-line-focus {
+    border-color: #f33a58;
+    width: 100%;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0 15px;
+}
+
+.form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 4px;
+    margin-top: 44px;
+}
+
+#form-login .form-submit {
+    padding: 40px 10px;
+}
+
+.forget-pw {
+    font-size: 1.6rem;
+    color: #b3b3b3;
+    padding-right: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s
+}
+
+.forget-pw:hover {
+    color: #848282;
+}
+
+#form-sign-up .forget-pw {
+    display: none;
+}
+
+#form-sign-up .form-submit {
+    justify-content: right;
+}
+
+.submit {
+    outline: none;
+    background-color: rgb(164 122 198);
+    padding: 12px 16px;
+    font-weight: 100;
+    color: #fff;
+    border: none;
+    width: 160px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: linear 0.2s;
+}
+
+.submit:hover {
+    opacity: 0.8;
+}
+
+.spacer {
+    margin-top: 36px;
+}
+
+.disappear {
+    display: none;
+}
+
+@keyframes slideLogIn {
+    from {
+        opacity: 0;
+        right: calc((100vw)/2 - 40px)
+    }
+    50% {
+        opacity: 1;
+        right: calc((100vw)/2 - 430px)
+    }
+    to {
+        right: calc((100vw)/2 - 420px)
+    }
+}
+
+@keyframes slideSignUp {
+    from {
+        opacity: 0;
+        left: calc((100vw)/2 - 40px)
+    }
+    50% {
+        opacity: 1;
+        left: calc((100vw)/2 - 430px)
+    }
+    to {
+        left: calc((100vw)/2 - 420px)
+    }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="main">
+        <!-- Modal chuyển layout sign up <=> login -->
+        <div class="base-modal">
+            <!-- Modal sign up -->
+            <div class="sign-up">
+                <h1 class="sign-up__title">Don't Have an account ?</h1>
+                <span class="sign-up__message">
+                    Bằng cách cho chúng tôi thông tin chi tiết của bạn, quá trình mua hàng trên PET.VN sẽ là một trải nghiệm thú vị và nhanh chóng hơn.
+                </span>
+                <button class="btn sign-up__btn">SIGN UP</button>
+            </div>
+            <!-- Modal Login -->
+            <div class="login">
+                <h1 class="login__title">Have an account ?</h1>
+                <span class="login__message">
+                    Bằng cách cho chúng tôi thông tin chi tiết của bạn, quá trình mua hàng trên PET.VN sẽ là một trải nghiệm thú vị và nhanh chóng hơn.
+                </span>
+                <button class="btn login__btn">LOGIN</button>
+            </div>
+        </div>
+
+        <!-- Form sign up -->
+        <form action="" method="POST" class="form" id="form-sign-up">
+            <h3 class="heading">SIGN UP</h3>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <input id="fullname" name="fullname" type="text" placeholder="Full Name" class="form-control">
+                <i class='form-icon bx bxs-user'></i>
+                <span class="form-line-focus"></span>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                <i class='form-icon bx bxs-envelope'></i>
+                <span class="form-line-focus"></span>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input id="password" name="password" type="password" placeholder="Password" class="form-control">
+                <i class='form-icon bx bxs-lock-alt'></i>
+                <span class="form-line-focus"></span>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" type="password" class="form-control">
+                <i class='form-icon bx bxs-lock-alt'></i>
+                <span class="form-line-focus"></span>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-submit">
+                <a class="forget-pw">Forgot Password ?</a>
+                <button class="submit">SIGN UP</button>
+            </div>
+        </form>
+
+        <!-- Form login -->
+        <form action="" method="POST" class="form" id="form-login">
+            <h3 class="heading">LOG IN</h3>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <input id="email-login" name="email-login" type="text" placeholder="Email" class="form-control">
+                <i class='form-icon bx bxs-envelope'></i>
+                <span class="form-line-focus"></span>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input id="password-login" name="password-login" type="password" placeholder="Password" class="form-control">
+                <i class='form-icon bx bxs-lock-alt'></i>
+                <span class="form-line-focus"></span>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-submit">
+                <a class="forget-pw">Forgot Password ?</a>
+                <button class="submit">LOG IN</button>
+            </div>
+        </form>
+
+    </div>
+    <script src="./validator.js"></script>
+    <script>
+        // Output
+        Validator({
+            form: '#form-sign-up',
+            errorSelector: 'form-message',
+            formGroupSelector: '.form-group',
+            rules: [
+                Validator.isRequired('#fullname'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
+                Validator.isPassWord('#password'),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isConfirmPW('#password_confirmation', function() {
+                    return document.querySelector('#form-sign-up #password').value
+                }, 'Mật khẩu nhập lại không chính xác')
+            ],
+            // Bỏ hàm onSubmit() để trả lại hành vi submit mặc định
+            onSubmit: function(data) {
+                // Call API
+                console.log(data)
+            }
+        })
+        Validator({
+            form: '#form-login',
+            errorSelector: 'form-message',
+            formGroupSelector: '.form-group',
+            rules: [
+                Validator.isRequired('#email-login'),
+                Validator.isEmail('#email-login'),
+                Validator.isRequired('#password-login'),
+                Validator.isPassWord('#password-login')
+            ],
+            // Bỏ hàm onSubmit() để trả lại hành vi submit mặc định
+            onSubmit: function(data) {
+                // Call API
+                console.log(data)
+            }
+        })
+    </script>
+</body>
+
+</html>
